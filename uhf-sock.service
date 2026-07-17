@@ -15,7 +15,7 @@ RestartSec=5
 NoNewPrivileges=true
 ProtectSystem=strict
 ProtectHome=true
-ReadWritePaths=/opt/uhf-sock
+ReadWritePaths=/opt/uhf-sock /tmp
 PrivateTmp=false
 
 [Install]
