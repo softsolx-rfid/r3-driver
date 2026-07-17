@@ -2,7 +2,12 @@
 Version Unix del driver R3.
 
 ### Instalacion:
-```bash
- curl -sL "(repo)instal.sh" | sh
+- Linux
+```sh
+ curl -sL https://raw.githubusercontent.com/softsolx-rfid/r3-driver/refs/heads/main/install.sh | sh
 ```
 
+- Windows
+```sh
+No Disponible
+```
