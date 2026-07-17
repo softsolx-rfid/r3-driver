@@ -38,11 +38,11 @@ if [ -f "/etc/systemd/system/${APP_NAME}.service" ]; then
 fi
 
 mkdir -p "${TMP_DIR}"
-curl -L "https://raw.githubusercontent.com/softsolx-rfid/r3-driver/refs/heads/main/${JAR_VERSION}" -o "${TMP_DIR}/app.jar"
+curl -L "https://raw.githubusercontent.com/softsolx-rfid/r3-driver/refs/tags/v1.0.0/${JAR_VERSION}" -o "${TMP_DIR}/app.jar"
 
-curl -L "https://raw.githubusercontent.com/softsolx-rfid/r3-driver/refs/heads/main/libTagReader.so" -o "${TMP_DIR}/libTagReader.so"
+curl -L "https://raw.githubusercontent.com/softsolx-rfid/r3-driver/refs/tags/v1.0.0/libTagReader.so" -o "${TMP_DIR}/libTagReader.so"
 
-curl -L "https://raw.githubusercontent.com/softsolx-rfid/r3-driver/refs/heads/main/uhf-sock.service" -o "${TMP_DIR}/uhf-sock.service"
+curl -L "https://raw.githubusercontent.com/softsolx-rfid/r3-driver/refs/tags/v1.0.0/uhf-sock.service" -o "${TMP_DIR}/uhf-sock.service"
 
 echo "==> Instalando ${APP_NAME} en ${INSTALL_DIR}"
 mkdir -p "${INSTALL_DIR}"
