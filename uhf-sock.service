@@ -16,7 +16,7 @@ LogNamespace=uhf-sock
 NoNewPrivileges=true
 ProtectSystem=strict
 ProtectHome=true
-ReadWritePaths=/opt/uhf-sock /tmp /var/uhf /var/log/uhf
+ReadWritePaths=/opt/uhf-sock /tmp /var /var/log
 PrivateTmp=false
 
 [Install]
