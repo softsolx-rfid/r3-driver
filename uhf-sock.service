@@ -10,6 +10,7 @@ WorkingDirectory=/opt/uhf-sock
 ExecStart=/usr/bin/java -jar /opt/uhf-sock/uhf-sock.jar
 Restart=on-failure
 RestartSec=5
+LogNamespace=uhf-sock
 
 # Endurecimiento básico
 NoNewPrivileges=true
