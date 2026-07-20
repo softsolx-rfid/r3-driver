@@ -17,7 +17,8 @@ TMP_DIR="/tmp/${APP_NAME}"
 INSTALL_DIR="/opt/${APP_NAME}"  
 JAVA_BIN="$(command -v java || echo /usr/bin/java)"
 JAVA_OPTS="-Xms256m -Xmx512m"
-APP_ARGS=""                     
+APP_ARGS=""
+GIT_TAG="v1.0.1"
 # ────────────────────────────────────────────────────────────────────
 
 if [[ $EUID -ne 0 ]]; then
@@ -38,18 +39,20 @@ if [ -f "/etc/systemd/system/${APP_NAME}.service" ]; then
 fi
 
 mkdir -p "${TMP_DIR}"
-curl -L "https://raw.githubusercontent.com/softsolx-rfid/r3-driver/refs/tags/v1.0.0/${JAR_VERSION}" -o "${TMP_DIR}/app.jar"
+curl -L "https://raw.githubusercontent.com/softsolx-rfid/r3-driver/refs/tags/${GIT_TAG}/${JAR_VERSION}" -o "${TMP_DIR}/app.jar"
 
-curl -L "https://raw.githubusercontent.com/softsolx-rfid/r3-driver/refs/tags/v1.0.0/libTagReader.so" -o "${TMP_DIR}/libTagReader.so"
+curl -L "https://raw.githubusercontent.com/softsolx-rfid/r3-driver/refs/tags/${GIT_TAG}/libTagReader.so" -o "${TMP_DIR}/libTagReader.so"
 
-curl -L "https://raw.githubusercontent.com/softsolx-rfid/r3-driver/refs/tags/v1.0.0/uhf-sock.service" -o "${TMP_DIR}/uhf-sock.service"
+curl -L "https://raw.githubusercontent.com/softsolx-rfid/r3-driver/refs/tags/${GIT_TAG}/uhf-sock.service" -o "${TMP_DIR}/uhf-sock.service"
 
 echo "==> Instalando ${APP_NAME} en ${INSTALL_DIR}"
 mkdir -p "${INSTALL_DIR}"
+rm -f "${INSTALL_DIR}"/*
 install -o "$SERVICE_USER" -g "$SERVICE_USER" -m 640 "${TMP_DIR}/app.jar" "${INSTALL_DIR}/${APP_NAME}.jar"
 install -o "$SERVICE_USER" -g "$SERVICE_USER" -m 640 "${TMP_DIR}/libTagReader.so" "${INSTALL_DIR}/libTagReader.so"
 
 echo "==> Escribiendo unidad systemd"
+rm -f "/etc/systemd/system/${APP_NAME}.service"
 install -o "$SERVICE_USER" -g "$SERVICE_USER" -m 644 "${TMP_DIR}/uhf-sock.service" "/etc/systemd/system/${APP_NAME}.service"
 
 rm -rf "${TMP_DIR}"
