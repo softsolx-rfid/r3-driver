@@ -18,7 +18,7 @@ INSTALL_DIR="/opt/${APP_NAME}"
 JAVA_BIN="$(command -v java || echo /usr/bin/java)"
 JAVA_OPTS="-Xms256m -Xmx512m"
 APP_ARGS=""
-GIT_TAG="v1.0.2"
+GIT_TAG="v1.1.0"
 # ────────────────────────────────────────────────────────────────────
 
 if [[ $EUID -ne 0 ]]; then
